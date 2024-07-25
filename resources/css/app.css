@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* For Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+  width: 3px;
+  /* for vertical scrollbars */
+  height: 3px;
+  /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+  appearance: none;
+  /* Hide the default appearance */
+  -webkit-appearance: none;
+  /* For Safari */
+  -moz-appearance: none;
+  /* For Firefox */
+  width: 16px;
+  /* Adjust the size of the checkbox */
+  height: 16px;
+  background-color: grey;
+  /* Unchecked background color */
+  border: 1px solid #ccc;
+  /* Border color */
+}
+
+/* Checked checkbox */
+input[type="checkbox"]:checked {
+  background-color: #d97706;
+  /* Tailwind's amber-600 */
+}
+
+@media (prefers-color-scheme: dark) {
+  .ant-table {
+    /* border: 1px solid rgb(49, 49, 49); */
+    background-color: rgb(68, 68, 68) !important;
+  }
+
+  .ant-table-thead>tr>th {
+    background-color: rgb(68, 68, 68) !important;
+    color: rgb(211, 211, 211) !important;
+  }
+
+  .ant-table-tbody>tr>td {
+    color: rgb(211, 211, 211);
+    background-color: rgb(24, 24, 24);
+  }
+
+  .ant-table-tbody>tr:hover>td {
+    background-color: rgb(50, 50, 50) !important;
+  }
+
+  .ant-table .anticon {
+    color: lightgray;
+  }
+}

@@ -1,0 +1,42 @@
+version: '3.7'
+
+services:
+  api:
+    container_name: api
+    image: retold-api
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www/html/
+    depends_on:
+      database:
+        condition: service_healthy
+    tty: true
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_HOST=database
+    ports:
+      - 8080:80
+    links:
+      - database
+    depends_on:
+      database:
+        condition: service_healthy
+
+  database:
+    image: mysql:8.1.0
+    container_name: database
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: retold
+      MYSQL_USER: retold
+      MYSQL_PASSWORD: retold
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
